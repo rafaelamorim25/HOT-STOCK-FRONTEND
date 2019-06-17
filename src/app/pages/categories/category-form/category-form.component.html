@@ -1,3 +1,53 @@
-<p>
-  category-form works!
-</p>
+<nav class="mb-5">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a routerLink="/">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a routerLink="/categorias">Categorias</a>
+        </li>
+        <li class="breadcrumb-item active">
+            Formulário
+        </li>
+    </ol>
+</nav>
+
+<div class="row mb-4">
+    <div class="col-md">
+        <h1 class="h2 border-left pl-2">
+            Formulário
+        </h1>
+    </div>
+    <div class="col-md">
+        <a routerLink="/categorias" class="btn btn-light float-right">
+            << Voltar </a>
+    </div>
+</div>
+<form [formGroup]="categoriaForm" (submit)="submitForm()">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                Categoria
+            </div>
+
+            <div class="card-body">
+
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="nome" formControlName="nome">
+                    <div class="text-danger" *ngIf="form.get('nome').invalid && form.get('nome').touched">
+                        <div *ngIf="form.get('nome').errors.required">
+                            Dado obrigatório
+                        </div>
+                        <div *ngIf="form.get('nome').errors.minlenght">
+                            Deve ter no mínimo 2 caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button [disabled]="submittingForm || categoriaForm.invalid" type="submit" class="btn btn-primary btn-lg mt-3">Salvar</button>
+    </div>
+
+</form>

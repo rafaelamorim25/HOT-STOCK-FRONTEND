@@ -32,18 +32,18 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="text-center">
+    <tr *ngFor="let categoria of categorias" class="text-center">
       <th>
-        1
+        {{categoria.id}}
       </th>
       <th>
-        Comidas
+        {{categoria.nome}}
       </th>
       <th>
-        <a [routerLink]="[1, 'edit']" class="text-secondary text-center"><i class="fas fa-edit"></i></a>
+        <a [routerLink]="[categoria.id, 'edit']" class="text-primary text-center"><i class="fas fa-edit"></i></a>
       </th>
       <th>
-        <a (click)="alert('excluir')" class="text-danger text-center"><i class="fas fa-trash-alt"></i></a>
+        <a (click)="deleteCategoria(categoria)" class="text-danger text-center"><i class="fas fa-trash-alt"></i></a>
       </th>
     </tr>
   </tbody>
